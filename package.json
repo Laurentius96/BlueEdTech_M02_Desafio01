@@ -1,0 +1,30 @@
+{
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.1",
+        "prompt-sync": "^4.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19",
+        "prettier": "2.7.1"
+    },
+    "name": "blueedtech_m02_desafio01",
+    "description": "",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index",
+        "dev": "nodemon index"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Laurentius96/BlueEdTech_M02_Desafio01.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Laurentius96/BlueEdTech_M02_Desafio01/issues"
+    },
+    "homepage": "https://github.com/Laurentius96/BlueEdTech_M02_Desafio01#readme"
+}
