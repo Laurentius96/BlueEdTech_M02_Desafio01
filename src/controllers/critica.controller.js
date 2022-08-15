@@ -18,7 +18,7 @@ const createCriticaController = (req, res) => {
 };
 
 const updateCriticaController = (req, res) => {
-  const idParam = +req.params.id;
+  const idParam = req.params.id;
   const criticaEdit = req.body;
   const updatedCritica = criticasService.updateCriticaService(idParam, criticaEdit);
   res.send(updatedCritica);
