@@ -7,7 +7,17 @@ const findCriticasController = (req, res) => {
 
 const findCriticaByIdController = (req, res) => {
   const idParam = req.params.id;
+
+  if (!idParam) {
+    return res.status(400).send({ message: 'ID não informado!' });
+  }
+
   const chosenCritica = criticasService.findCriticaByIdService(idParam);
+
+  if (!chosenCritica) {
+    return res.status(404).send({ message: 'Critica não encontrada!' });
+  }
+
   res.send(chosenCritica);
 };
 
