@@ -13,6 +13,19 @@ const findCriticaByIdController = (req, res) => {
 
 const createCriticaController = (req, res) => {
   const critica = req.body;
+
+  if (
+    !critica ||
+    !critica.restaurante ||
+    !critica.avaliacao ||
+    !critica.foto ||
+    !critica.nota
+  ) {
+    return res
+      .status(400)
+      .send({ mensagem: 'Você não preencheu todos os dados!!' });
+  }
+
   const newCritica = criticasService.createCriticaService(critica);
   res.send(newCritica);
 };
@@ -20,7 +33,10 @@ const createCriticaController = (req, res) => {
 const updateCriticaController = (req, res) => {
   const idParam = req.params.id;
   const criticaEdit = req.body;
-  const updatedCritica = criticasService.updateCriticaService(idParam, criticaEdit);
+  const updatedCritica = criticasService.updateCriticaService(
+    idParam,
+    criticaEdit,
+  );
   res.send(updatedCritica);
 };
 
@@ -30,11 +46,10 @@ const deleteCriticaController = (req, res) => {
   res.send({ message: 'Critica deletada com sucesso!' });
 };
 
-
 module.exports = {
   findCriticasController,
   findCriticaByIdController,
   createCriticaController,
   updateCriticaController,
-  deleteCriticaController
+  deleteCriticaController,
 };
