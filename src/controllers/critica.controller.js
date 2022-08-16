@@ -15,7 +15,7 @@ const findCriticaByIdController = (req, res) => {
   const chosenCritica = criticasService.findCriticaByIdService(idParam);
 
   if (!chosenCritica) {
-    return res.status(404).send({ message: 'Critica não encontrada!' });
+    return res.status(404).send({ message: 'Avaliação não encontrada!' });
   }
 
   res.send(chosenCritica);
@@ -43,6 +43,22 @@ const createCriticaController = (req, res) => {
 const updateCriticaController = (req, res) => {
   const idParam = req.params.id;
   const criticaEdit = req.body;
+
+  if (!idParam) {
+    return res.status(404).send({ message: 'Avaliação não encontrada!' });
+  }
+
+  if (
+    !criticaEdit ||
+    !criticaEdit.sabor ||
+    !criticaEdit.descricao ||
+    !criticaEdit.foto ||
+    !criticaEdit.preco
+  ) {
+    return res.status(400).send({
+      message: 'Você não preencheu todos os dados para editar a avaliação!',
+    });
+  }
   const updatedCritica = criticasService.updateCriticaService(
     idParam,
     criticaEdit,
