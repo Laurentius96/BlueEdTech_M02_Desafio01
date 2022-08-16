@@ -41,7 +41,7 @@ const createCriticaController = (req, res) => {
 };
 
 const updateCriticaController = (req, res) => {
-  const idParam = req.params.id;
+  const idParam = +req.params.id;
   const criticaEdit = req.body;
 
   if (!idParam) {
@@ -50,10 +50,10 @@ const updateCriticaController = (req, res) => {
 
   if (
     !criticaEdit ||
-    !criticaEdit.sabor ||
-    !criticaEdit.descricao ||
+    !criticaEdit.restaurante ||
+    !criticaEdit.avaliacao ||
     !criticaEdit.foto ||
-    !criticaEdit.preco
+    !criticaEdit.nota
   ) {
     return res.status(400).send({
       message: 'Você não preencheu todos os dados para editar a avaliação!',
@@ -67,9 +67,12 @@ const updateCriticaController = (req, res) => {
 };
 
 const deleteCriticaController = (req, res) => {
-  const idParam = req.params.id;
+  const idParam = +req.params.id;
+  if (!idParam) {
+    return res.status(404).send({ message: 'Avaliação não encontrada!' });
+  }
   criticasService.deleteCriticaService(idParam);
-  res.send({ message: 'Critica deletada com sucesso!' });
+  res.send({ message: 'Avaliação deletada com sucesso!' });
 };
 
 module.exports = {
