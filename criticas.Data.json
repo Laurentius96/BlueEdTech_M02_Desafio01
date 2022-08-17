@@ -1,0 +1,20 @@
+[
+  {
+    "restaurante": "Mirazur",
+    "avaliacao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+    "foto": "./assets/images/Mirazur.png",
+    "nota": 5
+  },
+  {
+    "restaurante": "Noma",
+    "avaliacao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+    "foto": "./assets/images/Noma.png",
+    "nota": 4
+  },
+  {
+    "restaurante": "Etxebarri",
+    "avaliacao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+    "foto": "./assets/images/Etxebarri.png",
+    "nota": 3
+  }
+]

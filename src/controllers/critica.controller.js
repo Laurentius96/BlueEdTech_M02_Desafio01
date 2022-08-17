@@ -1,7 +1,7 @@
 const criticasService = require('../services/critica.service');
 
-const findCriticasController = (req, res) => {
-  const allCriticas = criticasService.findCriticasService();
+const findCriticasController = async (req, res) => {
+  const allCriticas = await criticasService.findCriticasService();
   res.send(allCriticas);
 };
 
