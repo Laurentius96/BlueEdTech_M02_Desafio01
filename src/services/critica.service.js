@@ -20,9 +20,8 @@ const updateCriticaService = async (id, criticaEdited) => {
   return criticaAtualizada;
 };
 
-const deleteCriticaService = (id) => {
-  const criticaIndex = criticas.findIndex((critica) => critica.id == id);
-  return criticas.splice(criticaIndex, 1);
+const deleteCriticaService = async (id) => {
+  return await Critica.findByIdAndDelete(id);
 };
 
 module.exports = {

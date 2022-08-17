@@ -77,13 +77,23 @@ const updateCriticaController = async (req, res) => {
   res.send(updatedCritica);
 };
 
-const deleteCriticaController = (req, res) => {
-  const idParam = +req.params.id;
-  if (!idParam) {
+const deleteCriticaController = async (req, res) => {
+  const idParam = req.params.id;
+
+  if (!mongoose.Types.ObjectId.isValid(idParam)) {
+    res.status(400).send({ message: 'ID inválido!' });
+    return;
+  }
+
+  const chosenCritica = await criticasService.findCriticaByIdService(idParam);
+
+  if (!chosenCritica) {
     return res.status(404).send({ message: 'Avaliação não encontrada!' });
   }
-  criticasService.deleteCriticaService(idParam);
-  res.send({ message: 'Avaliação deletada com sucesso!' });
+
+  await criticasService.deleteCriticaService(idParam);
+
+  res.send({ message: 'Avaliação deletada!' });
 };
 
 module.exports = {
