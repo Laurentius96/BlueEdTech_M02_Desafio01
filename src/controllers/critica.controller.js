@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const criticasService = require('../services/critica.service');
 
 const findCriticasController = async (req, res) => {
@@ -5,14 +6,17 @@ const findCriticasController = async (req, res) => {
   res.send(allCriticas);
 };
 
-const findCriticaByIdController = (req, res) => {
+const findCriticaByIdController = async (req, res) => {
   const idParam = req.params.id;
 
-  if (!idParam) {
-    return res.status(400).send({ message: 'ID não informado!' });
+  if (!mongoose.Types.ObjectId.isValid(idParam)) {
+    res
+      .status(400)
+      .send({ message: 'ID inválido!' });
+    return;
   }
 
-  const chosenCritica = criticasService.findCriticaByIdService(idParam);
+  const chosenCritica = await criticasService.findCriticaByIdService(idParam);
 
   if (!chosenCritica) {
     return res.status(404).send({ message: 'Avaliação não encontrada!' });

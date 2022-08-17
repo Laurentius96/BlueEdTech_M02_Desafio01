@@ -5,8 +5,9 @@ const findCriticasService = async () => {
   return criticas;
 };
 
-const findCriticaByIdService = (id) => {
-  return criticas.find((critica) => critica.id == id);
+const findCriticaByIdService = async (id) => {
+  const critica = await Critica.findById(id);
+  return critica;
 };
 
 const createCriticaService = (newCritica) => {
@@ -33,5 +34,5 @@ module.exports = {
   findCriticaByIdService,
   createCriticaService,
   updateCriticaService,
-  deleteCriticaService
+  deleteCriticaService,
 };
