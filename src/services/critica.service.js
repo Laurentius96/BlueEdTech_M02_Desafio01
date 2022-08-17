@@ -10,18 +10,14 @@ const findCriticaByIdService = async (id) => {
   return critica;
 };
 
-const createCriticaService = (newCritica) => {
-  const newId = criticas.length + 1;
-  newCritica.id = newId;
-  criticas.push(newCritica);
-  return newCritica;
+const createCriticaService = async (newCritica) => {
+  const criticaCriada = await Critica.create(newCritica);
+  return criticaCriada;
 };
 
-const updateCriticaService = (id, criticaEdited) => {
-  criticaEdited['id'] = id;
-  const criticaIndex = criticas.findIndex((critica) => critica.id == id);
-  criticas[criticaIndex] = criticaEdited;
-  return criticaEdited;
+const updateCriticaService = async (id, criticaEdited) => {
+  const criticaAtualizada = await Critica.findByIdAndUpdate(id, criticaEdited);
+  return criticaAtualizada;
 };
 
 const deleteCriticaService = (id) => {

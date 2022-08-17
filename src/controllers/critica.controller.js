@@ -10,9 +10,7 @@ const findCriticaByIdController = async (req, res) => {
   const idParam = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    res
-      .status(400)
-      .send({ message: 'ID inválido!' });
+    res.status(400).send({ message: 'ID inválido!' });
     return;
   }
 
@@ -25,7 +23,7 @@ const findCriticaByIdController = async (req, res) => {
   res.send(chosenCritica);
 };
 
-const createCriticaController = (req, res) => {
+const createCriticaController = async (req, res) => {
   const critica = req.body;
 
   if (
@@ -40,15 +38,22 @@ const createCriticaController = (req, res) => {
       .send({ mensagem: 'Você não preencheu todos os dados!!' });
   }
 
-  const newCritica = criticasService.createCriticaService(critica);
+  const newCritica = await criticasService.createCriticaService(critica);
   res.send(newCritica);
 };
 
-const updateCriticaController = (req, res) => {
-  const idParam = +req.params.id;
+const updateCriticaController = async (req, res) => {
+  const idParam = req.params.id;
   const criticaEdit = req.body;
 
-  if (!idParam) {
+  if (!mongoose.Types.ObjectId.isValid(idParam)) {
+    res.status(400).send({ message: 'ID inválido!' });
+    return;
+  }
+
+  const chosenCritica = await criticasService.findCriticaByIdService(idParam);
+
+  if (!chosenCritica) {
     return res.status(404).send({ message: 'Avaliação não encontrada!' });
   }
 
@@ -63,10 +68,12 @@ const updateCriticaController = (req, res) => {
       message: 'Você não preencheu todos os dados para editar a avaliação!',
     });
   }
-  const updatedCritica = criticasService.updateCriticaService(
+
+  const updatedCritica = await criticasService.updateCriticaService(
     idParam,
     criticaEdit,
   );
+
   res.send(updatedCritica);
 };
 
