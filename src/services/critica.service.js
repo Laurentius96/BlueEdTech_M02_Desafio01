@@ -1,11 +1,11 @@
 const Critica = require('../models/Critica');
 
-const findCriticasService = async () => {
+const findAllCriticasService = async () => {
   const criticas = await Critica.find();
   return criticas;
 };
 
-const findCriticaByIdService = async (id) => {
+const findByIdCriticaService = async (id) => {
   const critica = await Critica.findById(id);
   return critica;
 };
@@ -25,8 +25,8 @@ const deleteCriticaService = async (id) => {
 };
 
 module.exports = {
-  findCriticasService,
-  findCriticaByIdService,
+  findAllCriticasService,
+  findByIdCriticaService,
   createCriticaService,
   updateCriticaService,
   deleteCriticaService,
