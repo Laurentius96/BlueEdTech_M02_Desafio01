@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const criticasService = require('../services/critica.service');
 
-const findCriticasController = async (req, res) => {
-  const allCriticas = await criticasService.findCriticasService();
+const findAllCriticasController = async (req, res) => {
+  const allCriticas = await criticasService.findAllCriticasService();
+  if (allCriticas.length == 0) {
+    return res
+      .status(404)
+      .send({ message: 'Não existe nenhuma critica cadastrada!' });
+  }
   res.send(allCriticas);
 };
 
@@ -97,8 +102,8 @@ const deleteCriticaController = async (req, res) => {
 };
 
 module.exports = {
-  findCriticasController,
-  findCriticaByIdController,
+  findAllCriticasController,
+  findByIdCriticaController,
   createCriticaController,
   updateCriticaController,
   deleteCriticaController,
