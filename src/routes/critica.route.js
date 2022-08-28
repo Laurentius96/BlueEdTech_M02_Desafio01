@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
-
+const router = require('express').Router();
 const criticasController = require('../controllers/critica.controller');
+const { validId, validObjectBody } = require('../middlewares/critica.middleware');
 
-router.get('/find-criticas', criticasController.findCriticasController);
-router.get('/find-critica/:id', criticasController.findCriticaByIdController);
-router.post('/create', criticasController.createCriticaController);
-router.put('/update/:id', criticasController.updateCriticaController);
-router.delete('/delete/:id', criticasController.deleteCriticaController);
+
+router.get('/all-criticas', criticasController.findCriticasController);
+router.get('/one-critica/:id', validId, criticasController.findCriticaByIdController);
+router.post('/create-critica', validObjectBody, criticasController.createCriticaController);
+router.put('/update-critica/:id', validId, validObjectBody, criticasController.updateCriticaController);
+router.delete('/delete-critica/:id', validId, criticasController.deleteCriticaController);
 
 module.exports = router;
