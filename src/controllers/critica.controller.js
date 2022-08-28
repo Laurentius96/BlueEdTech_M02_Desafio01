@@ -11,20 +11,12 @@ const findAllCriticasController = async (req, res) => {
   res.send(allCriticas);
 };
 
-const findCriticaByIdController = async (req, res) => {
+const findByIdCriticaController = async (req, res) => {
   const idParam = req.params.id;
-
-  if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    res.status(400).send({ message: 'ID inválido!' });
-    return;
-  }
-
-  const chosenCritica = await criticasService.findCriticaByIdService(idParam);
-
+  const chosenCritica = await criticasService.findByIdCriticaService(idParam);
   if (!chosenCritica) {
-    return res.status(404).send({ message: 'Avaliação não encontrada!' });
+    return res.status(404).send({ message: 'Critica não encontrada!' });
   }
-
   res.send(chosenCritica);
 };
 
