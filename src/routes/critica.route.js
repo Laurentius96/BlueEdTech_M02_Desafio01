@@ -1,12 +1,12 @@
-const router = require('express').Router();
+const route = require('express').Router();
 const criticasController = require('../controllers/critica.controller');
 const { validId, validObjectBody } = require('../middlewares/critica.middleware');
 
 
-router.get('/all-criticas', criticasController.findCriticasController);
-router.get('/one-critica/:id', validId, criticasController.findCriticaByIdController);
-router.post('/create-critica', validObjectBody, criticasController.createCriticaController);
-router.put('/update-critica/:id', validId, validObjectBody, criticasController.updateCriticaController);
-router.delete('/delete-critica/:id', validId, criticasController.deleteCriticaController);
+route.get('/all-criticas', controllerCriticas.findAllCriticasController);
+route.get('/one-critica/:id', validId, controllerCriticas.findByIdCriticaController);
+route.post('/create-critica', validObjectBody, controllerCriticas.createCriticaController);
+route.put('/update-critica/:id',validId, validObjectBody,  controllerCriticas.updateCriticaController);
+route.delete('/delete-critica/:id', validId, controllerCriticas.deleteCriticaController);
 
 module.exports = router;
