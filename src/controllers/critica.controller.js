@@ -28,56 +28,18 @@ const createCriticaController = async (req, res) => {
 
 const updateCriticaController = async (req, res) => {
   const idParam = req.params.id;
-  const criticaEdit = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    res.status(400).send({ message: 'ID inválido!' });
-    return;
-  }
-
-  const chosenCritica = await criticasService.findCriticaByIdService(idParam);
-
-  if (!chosenCritica) {
-    return res.status(404).send({ message: 'Avaliação não encontrada!' });
-  }
-
-  if (
-    !criticaEdit ||
-    !criticaEdit.restaurante ||
-    !criticaEdit.avaliacao ||
-    !criticaEdit.foto ||
-    !criticaEdit.nota
-  ) {
-    return res.status(400).send({
-      message: 'Você não preencheu todos os dados para editar a avaliação!',
-    });
-  }
-
+  const editCritica = req.body;
   const updatedCritica = await criticasService.updateCriticaService(
     idParam,
-    criticaEdit,
+    editCritica,
   );
-
   res.send(updatedCritica);
 };
 
 const deleteCriticaController = async (req, res) => {
   const idParam = req.params.id;
-
-  if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    res.status(400).send({ message: 'ID inválido!' });
-    return;
-  }
-
-  const chosenCritica = await criticasService.findCriticaByIdService(idParam);
-
-  if (!chosenCritica) {
-    return res.status(404).send({ message: 'Avaliação não encontrada!' });
-  }
-
   await criticasService.deleteCriticaService(idParam);
-
-  res.send({ message: 'Avaliação deletada!' });
+  res.send({ message: 'Critica deletada com sucesso!' });
 };
 
 module.exports = {
