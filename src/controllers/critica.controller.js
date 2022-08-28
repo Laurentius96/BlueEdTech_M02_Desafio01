@@ -22,21 +22,8 @@ const findByIdCriticaController = async (req, res) => {
 
 const createCriticaController = async (req, res) => {
   const critica = req.body;
-
-  if (
-    !critica ||
-    !critica.restaurante ||
-    !critica.avaliacao ||
-    !critica.foto ||
-    !critica.nota
-  ) {
-    return res
-      .status(400)
-      .send({ mensagem: 'Você não preencheu todos os dados!!' });
-  }
-
   const newCritica = await criticasService.createCriticaService(critica);
-  res.send(newCritica);
+  res.status(201).send(newCritica);
 };
 
 const updateCriticaController = async (req, res) => {
