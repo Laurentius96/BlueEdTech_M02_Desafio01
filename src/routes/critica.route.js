@@ -1,5 +1,8 @@
-const route = require('express').Router();
 const controllerCriticas = require('../controllers/critica.controller');
+const express = require('express');
+const route = express.Router();
+//const route = require('express').Router();
+
 const {
   validId,
   validObjectBody,
@@ -9,6 +12,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../swagger.json');
 
 route.use('/api-docs', swaggerUi.serve);
+
 route.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 route.get('/all-criticas', controllerCriticas.findAllCriticasController);
@@ -16,7 +20,7 @@ route.get('/all-criticas', controllerCriticas.findAllCriticasController);
 route.get(
   '/one-critica/:id',
   validId,
-  controllerCriticas.findByIdCriticaService,
+  controllerCriticas.findByIdCriticaController,
 );
 
 route.post(

@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const criticasService = require('../services/critica.service');
 
 const findAllCriticasController = async (req, res) => {
