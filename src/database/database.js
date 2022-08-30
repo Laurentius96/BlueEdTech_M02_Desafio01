@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 
 function connectToDatabase() {
   mongoose
-    .connect('mongodb://localhost:27017/criticas-db', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(
+      'mongodb+srv://root:lo2028@api-critica.tpi0sjc.mongodb.net/?retryWrites=true&w=majority',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+    )
     .then(() => {
       console.log('MongoDB Conectado!!');
     })

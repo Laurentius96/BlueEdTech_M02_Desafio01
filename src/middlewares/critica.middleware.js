@@ -12,10 +12,10 @@ const validObjectBody = (req, res, next) => {
   const critica = req.body;
   if (
     !critica ||
-    !critica.sabor ||
-    !critica.descricao ||
+    !critica.restaurante ||
+    !critica.avaliacao ||
     !critica.foto ||
-    !critica.preco
+    !critica.nota
   ) {
     return res
       .status(400)
