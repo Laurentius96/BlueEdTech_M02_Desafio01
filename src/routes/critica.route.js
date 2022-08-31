@@ -11,10 +11,6 @@ const {
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../swagger.json');
 
-route.use('/api-docs', swaggerUi.serve);
-
-route.get('/api-docs', swaggerUi.setup(swaggerDocument));
-
 route.get('/all-criticas', controllerCriticas.findAllCriticasController);
 
 route.get(
@@ -41,5 +37,8 @@ route.delete(
   validId,
   controllerCriticas.deleteCriticaController,
 );
+
+route.use('/api-docs', swaggerUi.serve);
+route.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 module.exports = route;

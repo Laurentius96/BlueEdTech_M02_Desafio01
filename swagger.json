@@ -2,29 +2,29 @@
   "openapi": "3.0.0",
   "info": {
     "title": "API El Geladon",
-    "description": "API para CRUD de paletas mexicanas e carrinho de compras",
+    "description": "API para CRUD de criticas de restaurantes",
     "termsOfService": "",
     "contact": {
-      "email": "tlima@blueedtech.com.br"
+      "email": ""
     },
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://localhost:3000/paletas",
+      "url": "http://localhost:3000/critica",
       "description": "API de teste"
     },
     {
-      "url": "https://api-elgeladon.herokuapp.com/paletas",
+      "url": "https://api-elgeladon.herokuapp.com/critica",
       "description": "API de produção"
     }
   ],
   "paths": {
-    "/all-paletas": {
+    "/all-criticas": {
       "get": {
-        "summary": "Lista de todas as paletas",
-        "description": "Rota responsável por listar todas as paletas",
-        "tags": ["Paletas"],
+        "summary": "Lista de todas as criticas",
+        "description": "Rota responsável por listar todas as criticas",
+        "tags": ["Criticas"],
         "responses": {
           "404": {
             "description": "Not Found"
@@ -36,7 +36,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Paletas"
+                    "$ref": "#/components/schemas/Criticas"
                   }
                 }
               }
@@ -45,16 +45,16 @@
         }
       }
     },
-    "/one-paleta/{id}": {
+    "/one-critica/{id}": {
       "get": {
-        "summary": "Busca uma paleta pelo ID",
-        "description": "Rota responsável por buscar uma paleta pelo ID",
-        "tags": ["Paletas"],
+        "summary": "Busca uma critica pelo ID",
+        "description": "Rota responsável por buscar uma critica pelo ID",
+        "tags": ["Criticas"],
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Id da paleta para a busca",
+            "description": "Id da critica para a busca",
             "required": true
           }
         ],
@@ -68,7 +68,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Paletas"
+                  "$ref": "#/components/schemas/Criticas"
                 }
               }
             }
@@ -76,19 +76,19 @@
         }
       }
     },
-    "/create-paleta": {
+    "/create-critica": {
       "post": {
-        "summary": "Cadastrar uma paleta",
-        "description": "Rota responsável por cadastrar uma paleta",
-        "tags": ["Paletas"],
+        "summary": "Cadastrar uma critica",
+        "description": "Rota responsável por cadastrar uma critica",
+        "tags": ["Criticas"],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Paletas"
+                "$ref": "#/components/schemas/Criticas"
               },
               "examples": {
-                "Paletas": {
+                "Criticas": {
                   "value": {
                     "sabor": "Maracuja",
                     "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
@@ -110,7 +110,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Paletas"
+                  "$ref": "#/components/schemas/Criticas"
                 }
               }
             }
@@ -118,16 +118,16 @@
         }
       }
     },
-    "/update-paleta/{id}": {
+    "/update-critica/{id}": {
       "put": {
-        "summary": "Editar uma paleta pelo ID",
-        "description": "Rota responsável por editar uma paleta pelo ID",
-        "tags": ["Paletas"],
+        "summary": "Editar uma critica pelo ID",
+        "description": "Rota responsável por editar uma critica pelo ID",
+        "tags": ["Criticas"],
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Id da paleta para a busca",
+            "description": "Id da Critica para a busca",
             "required": true
           }
         ],
@@ -135,10 +135,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Paletas"
+                "$ref": "#/components/schemas/Criticas"
               },
               "examples": {
-                "Paletas": {
+                "Criticas": {
                   "value": {
                     "sabor": "Limão Editado",
                     "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
@@ -160,7 +160,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Paletas"
+                  "$ref": "#/components/schemas/Criticas"
                 }
               }
             }
@@ -168,16 +168,16 @@
         }
       }
     },
-    "/delete-paleta/{id}": {
+    "/delete-critica/{id}": {
       "delete": {
-        "summary": "Apagar uma paleta pelo ID",
-        "description": "Rota responsável por apagar uma paleta pelo ID",
-        "tags": ["Paletas"],
+        "summary": "Apagar uma critica pelo ID",
+        "description": "Rota responsável por apagar uma critica pelo ID",
+        "tags": ["Criticas"],
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Id da paleta para deleção",
+            "description": "Id da critica para deleção",
             "required": true
           }
         ],
@@ -191,11 +191,11 @@
         }
       }
     },
-    "/all-carrinho": {
+    "/all-avaliacao": {
       "get": {
-        "summary": "Lista de todos os itens do carrinho",
-        "description": "Rota responsável por listar todos os itens do carrinho",
-        "tags": ["Carrinho"],
+        "summary": "Lista de todos os itens do avaliacao",
+        "description": "Rota responsável por listar todos os itens da avaliacao",
+        "tags": ["Avaliacao"],
         "responses": {
           "404": {
             "description": "Not Found"
@@ -207,7 +207,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Carrinho"
+                    "$ref": "#/components/schemas/Avaliacao"
                   }
                 }
               }
@@ -216,26 +216,26 @@
         }
       }
     },
-    "/create-carrinho": {
+    "/create-avaliacao": {
       "post": {
-        "summary": "Cadastrar vários itens no carrinho",
-        "description": "Rota responsável por cadastrar vários itens no carrinho",
-        "tags": ["Carrinho"],
+        "summary": "Cadastrar vários itens no avaliacao",
+        "description": "Rota responsável por cadastrar vários itens no avaliacao",
+        "tags": ["Avaliacao"],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Carrinho"
+                "$ref": "#/components/schemas/Avaliacao"
               },
               "examples": {
-                "Carrinho": {
+                "Avaliacao": {
                   "value": [
                     {
-                      "paletaId": "624230fdcd38269205c82197",
+                      "criticaId": "624230fdcd38269205c82197",
                       "quantidade": 5
                     },
                     {
-                      "paletaId": "62423c1e618f4a4738a5ee75",
+                      "criticaId": "62423c1e618f4a4738a5ee75",
                       "quantidade": 2
                     }
                   ]
@@ -255,7 +255,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Carrinho"
+                    "$ref": "#/components/schemas/Avaliacao"
                   }
                 }
               }
@@ -264,48 +264,48 @@
         }
       }
     },
-    "/finish-carrinho": {
-        "delete": {
-          "summary": "Apagar todos os itens do carrinho",
-          "description": "Rota responsável por apagar todos os itens do carrinho",
-          "tags": ["Carrinho"],
-          "responses": {
-            "400": {
-              "description": "Bad Request"
-            },
-            "200": {
-              "description": "OK"
-            }
+    "/finish-avaliacao": {
+      "delete": {
+        "summary": "Apagar todos os itens do avaliacao",
+        "description": "Rota responsável por apagar todos os itens do avaliacao",
+        "tags": ["Avaliacao"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK"
           }
         }
       }
+    }
   },
   "components": {
     "schemas": {
-      "Paletas": {
+      "Criticas": {
         "type": "object",
         "properties": {
-          "sabor": {
+          "restaurante": {
             "type": "string"
           },
-          "descricao": {
+          "avaliacao": {
             "type": "string"
           },
           "foto": {
             "type": "string"
           },
-          "preco": {
+          "nota": {
             "type": "number"
           }
         }
       },
-      "Carrinho": {
+      "Avaliacoes": {
         "type": "object",
         "properties": {
-          "paletaId": {
+          "criticaId": {
             "type": "string"
           },
-          "quantidade": {
+          "nota": {
             "type": "number"
           }
         }
