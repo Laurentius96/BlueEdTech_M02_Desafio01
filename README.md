@@ -10,7 +10,6 @@ A aplicação consiste no uso do(a):
 
 # Como executar o projeto
 
-## Back end
 Pré-requisitos: Node versão 16 (ou superior) 
 
 ```bash
