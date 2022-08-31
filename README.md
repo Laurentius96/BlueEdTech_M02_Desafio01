@@ -21,10 +21,12 @@ No prompt de comando digitar: npm i
 
 # Executar o projeto em uso local
 npm run dev 
-```
-# Visualição da aplicação
-```bash
-# Links
-Heroku: https://app-critica.herokuapp.com/critica/all-criticas
+
+# Visualisação 
 Swagger: http://localhost:3000/critica/api-docs
+```
+# Visualição da aplicação 
+```bash
+# Link
+Heroku: https://app-critica.herokuapp.com/critica/all-criticas
 ```
