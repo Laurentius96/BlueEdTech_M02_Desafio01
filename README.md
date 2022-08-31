@@ -22,10 +22,10 @@ No prompt de comando digitar: npm i
 # Executar o projeto em uso local
 npm run dev 
 
-# Visualisação no Swagger
+# Visualização no Swagger
 No seu navegador cole o seguinte link: http://localhost:3000/critica/api-docs
 ```
-# Visualição da aplicação 
+# Visualização da aplicação 
 ```bash
 # Link
 Heroku: https://app-critica.herokuapp.com/critica/all-criticas
