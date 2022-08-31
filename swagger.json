@@ -15,7 +15,7 @@
       "description": "API de teste"
     },
     {
-      "url": "https://api-elgeladon.herokuapp.com/critica",
+      "url": "https://app-critica.herokuapp.com/critica",
       "description": "API de produção"
     }
   ],
