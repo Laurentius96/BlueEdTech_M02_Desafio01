@@ -22,8 +22,8 @@ No prompt de comando digitar: npm i
 # Executar o projeto em uso local
 npm run dev 
 
-# Visualisação 
-Swagger: http://localhost:3000/critica/api-docs
+# Visualisação no Swagger
+No seu navegador cole o seguinte link: http://localhost:3000/critica/api-docs
 ```
 # Visualição da aplicação 
 ```bash
