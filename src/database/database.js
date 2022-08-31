@@ -1,20 +1,15 @@
 const mongoose = require('mongoose');
 
-function connectToDatabase() {
+const connectToDatabase = () => {
   mongoose
-    .connect(
-      'mongodb+srv://root:lo2028@api-critica.tpi0sjc.mongodb.net/?retryWrites=true&w=majority',
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },
-    )
-    .then(() => {
-      console.log('MongoDB Conectado!!');
+    .connect(process.env.URI_DATABASE, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     })
-    .catch((err) => {
-      return console.log(`Erro na conexão com o banco: ${err}`);
-    });
-}
+    .then(() => console.log('MongoDB Atlas Conectado!'))
+    .catch((error) =>
+      console.log(`Erro ao conectar com o MongoDB, erro: ${error}`),
+    );
+};
 
 module.exports = connectToDatabase;
